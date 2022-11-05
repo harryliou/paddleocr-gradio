@@ -1,5 +1,6 @@
 # Detect Traditional Chinese and English with PaddleOCR
 Run PaddleOCR on the gradio app to detect traditional Chinese and English in images
+![image](images/ui.png)
 
 ## Setup
 ```
