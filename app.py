@@ -1,3 +1,4 @@
+import click
 import cv2
 import gradio as gr
 from ocr.predict_system import TextSystem
@@ -33,18 +34,27 @@ def predict(img, drop_score):
         font_path=args.vis_font_path
     )
     print('time spent: {}'.format(time_dict))
-    return draw_img
+    return draw_img, time_dict
 
-demo = gr.Interface(
-    predict,
-    inputs=[
-        gr.Image(),
-        gr.Slider(0, 1, 0.7)
-    ],
-    outputs='image',
-    title='PaddleOCR Demo',
-    examples=[['meme.jpg']],
-    allow_flagging='never'
-)
+@click.command()
+@click.option('--share', '-share', '-s', '--s', help='gradio share link', default=False)
+def main(share):
+    demo = gr.Interface(
+        predict,
+        inputs=[
+            gr.Image(),
+            gr.Slider(0, 1, 0.7)
+        ],
+        outputs=[
+            gr.Image(label='Result'),
+            gr.Textbox(label='Time spent')
+        ],
+        title='PaddleOCR Demo - https://github.com/harryliou/paddleocr-gradio',
+        examples=[['meme.jpg']],
+        allow_flagging='never'
+    )
 
-demo.launch(share=True)
+    demo.launch(share=share)
+
+if __name__ == '__main__':
+    main()

@@ -2,11 +2,23 @@
 Run PaddleOCR on the gradio app to detect traditional Chinese and English in images
 
 ## Setup
-* pip install paddlepaddle -i https://mirror.baidu.com/pypi/simple
-* pip install -r requirements.txt
-
+```
+pip install paddlepaddle -i https://mirror.baidu.com/pypi/simple
+pip install -r requirements.txt
+```
+## Usage
+```
+python app.py --help
+```
 ## Run
-* python ./app.py
+Run gradio locally
+```
+  python ./app.py
+```
+Run and share gradio with gradio server
+```
+  python ./app.py -s True
+```
 
 ## Reference
-* "PaddleOCR":https://github.com/PaddlePaddle/PaddleOCR
+* [PaddleOCR github](https://github.com/PaddlePaddle/PaddleOCR)
